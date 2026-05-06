@@ -1,8 +1,8 @@
-# from src.my_stack import MyStack
+from src.my_stack import MyStack
 
 
 def is_valid_parentheses(string: str) -> bool:
-    pilhaTeste = []
+    pilhaTeste = MyStack()
     if len(string) == 0:
         return True
     if string[0] == ")" or string[0] == "]" or string[0] == "}":
@@ -10,9 +10,9 @@ def is_valid_parentheses(string: str) -> bool:
     for i in range(len(string)):
         parentese = string[i]
         if parentese in "([{":
-            pilhaTeste.append(parentese)
+            pilhaTeste.push(parentese)
         elif parentese in ")}]":
-            if not pilhaTeste:
+            if pilhaTeste.is_empty():
                 return False
             removido = pilhaTeste.pop()
             if parentese == ")" and removido != "(":
@@ -23,7 +23,4 @@ def is_valid_parentheses(string: str) -> bool:
                 return False
         else:
             return False
-    if len(pilhaTeste) == 0:
-        return True
-    else:
-        return False
+    return pilhaTeste.is_empty()
