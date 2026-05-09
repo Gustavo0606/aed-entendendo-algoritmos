@@ -10,16 +10,13 @@ def quick_sort(array: MyArray) -> MyArray:
         for i in range(min, max):
             if array[i] < pivo:
                 array[n_pivo], array[i] = array[i], array[n_pivo]
-                n_pivo +=1
+                n_pivo += 1
         array[n_pivo], array[max] = array[max], array[n_pivo]
         quicksort(array, min, n_pivo-1)
         quicksort(array, n_pivo+1, max)
         return array
-    
-    
     if len(array) == 1:
         return array
     elif not len(array):
         return array
     return quicksort(array, 0, len(array)-1)
-    
